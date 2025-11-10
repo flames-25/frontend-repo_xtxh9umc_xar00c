@@ -1,28 +1,37 @@
-import { useState } from 'react'
+import React from 'react';
+import { AnimatePresence } from 'framer-motion';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Footer() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
+    <footer className="border-t border-neutral-200 bg-white/70 px-6 py-10 backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-950/60">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 sm:flex-row">
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">© {new Date().getFullYear()} Harshad — All rights reserved.</p>
+        <a href="#home" className="rounded-xl border border-neutral-200 bg-white/70 px-4 py-2 text-sm text-neutral-800 hover:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900/60 dark:text-neutral-200">
+          Scroll to top ↑
+        </a>
       </div>
-    </div>
-  )
+    </footer>
+  );
 }
 
-export default App
+export default function App() {
+  return (
+    <AnimatePresence mode="wait">
+      <div className="min-h-screen bg-white text-neutral-900 antialiased dark:bg-neutral-950 dark:text-white">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </AnimatePresence>
+  );
+}
